@@ -1,0 +1,209 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Required for Vundle
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if &compatible
+	set nocompatible
+endif
+filetype off
+
+set rtp+=~/.vim/bundle/vundle
+call vundle#begin()
+
+" Let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" Plugins, plugins, plugins
+Plugin 'bling/vim-airline'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'tpope/vim-fugitive'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-eunuch'
+
+
+call vundle#end()
+filetype plugin indent on
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               General settings                               "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" TAB COMPLETION
+" --------------
+
+" First tab: complete till longest common string
+" Second tab: list all matches
+" Third and subsequent tabs: cycle through completion options
+set wildmode=longest,list,full
+
+" Use wildmenu for list mode above
+set wildmenu
+
+" Insert mode completion options
+" Use a popup menu to see all possible completions (even if there is only one
+" match).  Only insert the longest common text for all matches.
+set completeopt=menu,menuone,longest
+
+" Jump to the first open window that contains the specified buffer.  Also
+" consider windows in other tab pages.
+set switchbuf=useopen,usetab
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               Display settings                               "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set number
+set showmatch
+set showmode
+set showcmd
+set ruler
+set title
+set wildmenu
+set wildignore=*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,.svn
+set laststatus=2
+set matchtime=2
+set matchpairs+=<:>
+set textwidth=80
+
+set t_Co=256
+syntax enable
+set background=dark
+let g:solarized_termtrans=1
+let g:solarized_termcolors=256
+colorscheme solarized
+
+" Do not highlight search criteria
+set nohlsearch
+
+" ... except as we type
+set incsearch
+
+" Make global search/replace the default option
+set gdefault
+
+set colorcolumn=+1
+
+" Number of screen lines to use for the command line
+set cmdheight=2
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               Editor settings                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Function keys that start with <Esc> are recognised in insert mode
+set esckeys
+
+" Case-insensitive searching
+set ignorecase
+
+" Become case-sensitive if we type uppercase characters
+set smartcase
+
+" On new lines, match the indent of the previous line
+set autoindent
+
+" Copy the previous indentation on autoindenting
+set copyindent
+
+" Smart indenting for C-like code
+set cindent
+
+" C indentation options
+"  - Align C++ scope declarations with the enclosing block
+"  - Do not use extra indentation for code inside a C++ namespace
+"  - Do not indent function return type if it is on a standalone line
+"  - With unclosed parentheses, align with the next non-whitespace character
+"  after the opening parenthesis
+"  - Indent the line after a line where an unclosed parenthesis is the last
+"  character by 4 spaces
+set cinoptions=g0,N-s,t0,(0,W4
+
+" Smart tab handling for indenting
+set smarttab
+
+" Change the way backslashes are used inside search patterns
+set magic
+
+" Allow backspacing over everything in insert mode
+set bs=indent,eol,start
+
+" Number of visual spaces that a Tab character ('\x09') counts for
+set tabstop=4
+
+" Number of spaces to use for each step of (auto)indent
+set shiftwidth=4
+
+" Number of spaces a tab counts for while performing editing operations
+set softtabstop=4
+
+" Round indent to a multiple of shiftwidth
+set shiftround
+
+" Expand a tab into spaces
+set expandtab
+
+" The status line is now always shown
+set laststatus=2
+
+" Do not show editing mode
+set noshowmode
+
+" Default file mode is Unix (LF)
+set fileformat=unix
+
+set fileformats=unix,dos,mac
+set mouse=a
+
+" Use UTF-8
+set encoding=utf-8
+set termencoding=utf-8
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               System settings                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set lazyredraw
+set confirm
+
+" No backup~ files
+set nobackup
+set viminfo='20,\"500
+set hidden
+set history=5000
+
+" Many undo levels
+set undolevels=1000
+
+" Enables the mouse in all modes
+set mouse=a
+if has("autocmd")
+	" Automatically change to the directory the current file resides in
+	" autocmd BufEnter * lcd %:p:h
+	augroup mysettings
+		au FileType c,cpp set smartindent shiftwidth=8 tabstop=8 softtabstop=8
+		au FileType python
+					\ set tabstop=4 softtabstop=4 expandtab shiftwidth=4
+		au FileType xslt,xml,css,html
+					\ set smartindent shiftwidth=2 softtabstop=2
+	augroup END
+endif
+
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+
+set tags=./tags;/
+if has("cscope")
+	set csto=0
+	set cst
+	set nocsverb
+	" add any database in current directory
+	if filereadable("cscope.out")
+		cs add cscope.out
+	" else add database pointed to by environment
+	elseif $CSCOPE_DB != ""
+		cs add $CSCOPE_DB
+	endif
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                              Plugins roam here                               "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline_powerline_fonts=1
+let g:airline_theme='wombat'
+
