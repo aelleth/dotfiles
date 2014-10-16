@@ -72,18 +72,18 @@ fi
 if [[ $OSTYPE =~ "linux-gnu|cygwin" ]]; then
 	alias ls='ls --color=tty'
 	alias ll='ls -l --time-style="+%a, %d %h %Y %T %z"'
-elif [[ $OSTYPE =~ "darwin" ]]; then
-    if [[ $(whence -p ls) = "/bin/ls"]; then
-        # We have system ls(1), which doesn't support -D
-        alias ls='ls -G'
-        alias ll='ls -lT'
-    else
-        alias ls='ls --color=tty'
+elif [[ $OSTYPE =~ "freebsd|darwin" ]]; then
+    if [[ -n $(whence gls) ]]; then
+        alias ls='gls --color=auto'
         alias ll='ls -l --time-style="+%a, %d %h %Y %T %z"'
+    else
+        alias ls='ls -G'
+        if [[ $OSTYPE =~ "freebsd" ]]; then
+            alias ll='ls -lD"%a, %d %h %Y %T %z"'
+        else # if OSX
+            alias ll='ls -lT'
+        fi
     fi
-elif [[ $OSTYPE =~ "freebsd" ]]; then
-	alias ls='ls -G'
-	alias ll='ls -lD"%a, %d %h %Y %T %z"'
 fi
 
 alias la='ll -A'
