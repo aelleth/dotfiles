@@ -63,11 +63,6 @@ fi
 
 PATH="$HOME/bin:$PATH"
 
-# dircolors
-if whence dircolors && [[ ~/.dircolors ]]; then
-	eval $(dircolors -b ~/.dircolors)
-fi
-
 # Use the correct ls(1) options to specify long mtime output
 if [[ $OSTYPE =~ "linux-gnu|cygwin" ]]; then
 	alias ls='ls --color=tty'
@@ -84,9 +79,16 @@ elif [[ $OSTYPE =~ "freebsd|darwin" ]]; then
             alias ll='ls -lT'
         fi
     fi
+
+    alias dircolors=$(whence -p gdircolors dircolors | head -1)
 fi
 
 alias la='ll -A'
+
+# dircolors
+if whence dircolors && [[ -e ~/.dircolors ]]; then
+	eval $(dircolors -b ~/.dircolors)
+fi
 
 zmodload zsh/complist
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
