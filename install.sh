@@ -2,6 +2,15 @@
 
 script_dir=$(cd $(dirname "$0") && pwd)
 
+git_submodule_needs_init() {
+    res=`git submodule status $1 | awk '{ print substr($0, 0, 1) }'`
+    if [ "$res" = "-" ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
 binlist="cmake git vim"
 
 for binary in $binlist; do
@@ -35,4 +44,13 @@ if [ ! -d ~/.vim/bundle/vundle ] || \
     make ycm_support_libs
     cd $script_dir
     rm -r $ycm_build_dir
+fi
+
+if git_submodule_needs_init "dircolors-solarized"; then
+    git submodule init dircolors-solarized
+    git submodule update dircolors-solarized
+fi
+
+if [ ! -e ~/.dircolors ]; then
+    ln -s $script_dir/dircolors-solarized/dircolors.256dark ~/.dircolors
 fi
