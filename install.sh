@@ -18,3 +18,21 @@ fi
 if [ ! -e ~/.vimrc ]; then
     ln -s $script_dir/vim/vimrc ~/.vimrc
 fi
+
+if [ ! -d ~/.vim/bundle/vundle ] || \
+    ! git rev-parse --git-dir ~/.vim/bundle/vundle >/dev/null 2>&1; then
+    mkdir -p ~/.vim/bundle
+    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle
+    echo "Installing Vim plugins..."
+    vim -e +PluginInstall +qall > /dev/null 2>&1
+
+    # Install YouCompleteMe support libs.  And yes, use system clang, even
+    # though the YCM documentation suggests otherwise.
+    ycm_build_dir=`mktemp /tmp/ycm_build.XXXXXX`
+    cd $ycm_build_dir
+    cmake -G "Unix Makefiles" -DUSE_SYSTEM_CLANG=ON . \
+        ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp
+    make ycm_support_libs
+    cd $script_dir
+    rm -r $ycm_build_dir
+fi
