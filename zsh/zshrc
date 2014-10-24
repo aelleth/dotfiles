@@ -86,7 +86,7 @@ fi
 alias la='ll -A'
 
 # dircolors
-if whence dircolors && [[ -e ~/.dircolors ]]; then
+if whence dircolors >&/dev/null && [[ -e ~/.dircolors ]]; then
 	eval $(dircolors -b ~/.dircolors)
 fi
 
