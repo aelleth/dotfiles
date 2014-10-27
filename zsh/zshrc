@@ -55,6 +55,9 @@ setopt EXTENDED_HISTORY
 # generation, etc.
 setopt EXTENDED_GLOB
 
+LESS="isR"
+export LESS
+
 # PATH
 if [[ $OSTYPE =~ "darwin" ]]; then
 	PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:$PATH"
