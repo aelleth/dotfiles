@@ -112,3 +112,5 @@ man() {
         LESS_TERMCAP_us=$(printf "\e[4;38;5;146m") \
         man -P less "$@"
 }
+
+CSCOPE_EDITOR=$(whence -p vim); export CSCOPE_EDITOR
