@@ -22,6 +22,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-eunuch'
 Plugin 'majutsushi/tagbar'
 Plugin 'jlfwong/vim-mercenary'
+Plugin 'tpope/vim-dispatch'
 
 call vundle#end()
 filetype plugin indent on
@@ -213,3 +214,4 @@ let g:tagbar_usearrows=1
 "                                 Key mappings                                 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <F8> :TagbarToggle<CR>
+map <F10> :Make<CR>
