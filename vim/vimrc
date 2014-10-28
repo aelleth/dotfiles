@@ -21,6 +21,7 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-eunuch'
 Plugin 'majutsushi/tagbar'
+Plugin 'jlfwong/vim-mercenary'
 
 call vundle#end()
 filetype plugin indent on
