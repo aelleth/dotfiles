@@ -32,6 +32,10 @@ if [ ! -e ~/.vimrc ]; then
     ln -s $script_dir/vim/vimrc ~/.vimrc
 fi
 
+if [ ! -e ~/.tmux.conf ]; then
+    ln -s $script_dir/tmux/tmux.conf ~/.tmux.conf
+fi
+
 if [ ! -d ~/.vim/bundle/vundle ] || \
     ! git rev-parse --git-dir ~/.vim/bundle/vundle >/dev/null 2>&1; then
     mkdir -p ~/.vim/bundle
