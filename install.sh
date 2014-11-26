@@ -54,6 +54,10 @@ if [ ! -d ~/.vim/bundle/vundle ] || \
     rm -r $ycm_build_dir
 fi
 
+if [ ! -d ~/.vim/plugin ]; then
+    ln -s $script_dir/vim/plugin ~/.vim/plugin
+fi
+
 if git_submodule_needs_init "dircolors-solarized"; then
     git submodule init dircolors-solarized
     git submodule update dircolors-solarized
