@@ -87,6 +87,7 @@ elif [[ $OSTYPE =~ "freebsd|darwin" ]]; then
 fi
 
 alias la='ll -A'
+alias grep='grep --color=auto'
 
 llp() {
     ll --color=always "$@" | less
