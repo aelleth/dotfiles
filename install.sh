@@ -45,9 +45,23 @@ if [ ! -d ~/.vim/bundle/vundle ] || \
 
     # Install YouCompleteMe support libs.  And yes, use system clang, even
     # though the YCM documentation suggests otherwise.
+    CDEFINES="-DUSE_SYSTEM_CLANG=ON"
+
+    # On OSX, if you have Homebrew Python installed, YCM will be linked against
+    # it, but the Homebrew version of Vim is linked against the system Python.
+    # Segfaults and hilarity ensue.
+    #
+    # In order to restore chaos in this madness, we explicitly point clang to
+    # the system Python headers and shared libraries.
+    osname=`uname -o`
+    if [ $osname == "Darwin" ]; then
+        CDEFINES="$CDEFINES -DPYTHON_LIBRARY=/usr/local/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib"
+        CDEFINES="$CDEFINES -DPYTHON_INCLUDE_DIR=/usr/local/Frameworks/Python.framework/Versions/2.7/Headers"
+    fi
+
     ycm_build_dir=`mktemp /tmp/ycm_build.XXXXXX`
     cd $ycm_build_dir
-    cmake -G "Unix Makefiles" -DUSE_SYSTEM_CLANG=ON . \
+    cmake -G "Unix Makefiles" $CDEFINES . \
         ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp
     make ycm_support_libs
     cd $script_dir
