@@ -178,7 +178,15 @@ if has("autocmd")
 	" autocmd BufEnter * lcd %:p:h
 	augroup mysettings
 		au FileType text set textwidth=80
-		au FileType c,cpp set smartindent shiftwidth=8 tabstop=8 softtabstop=8
+		au FileType c,cpp
+					\ set textwidth=80
+					\ tabstop=8
+					\ shiftwidth=8
+					\ noexpandtab
+					\ cindent
+					\ cinoptions=(4200,u4200,+0.5s,*500,:0,t0,U4200
+					\ indentexpr=IgnoreParenIndent()
+					\ indentkeys=0{,0},0),:,0#,!^F,o,O,e
 		au FileType python
 					\ set tabstop=4 softtabstop=4 expandtab shiftwidth=4
 		au FileType xslt,xml,css,html
