@@ -23,6 +23,7 @@ Plugin 'tpope/vim-eunuch'
 Plugin 'majutsushi/tagbar'
 Plugin 'jlfwong/vim-mercenary'
 Plugin 'tpope/vim-dispatch'
+Plugin 'scrooloose/nerdtree'
 
 call vundle#end()
 filetype plugin indent on
