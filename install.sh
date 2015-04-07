@@ -43,9 +43,8 @@ if [ ! -d ~/.vim/bundle/Vundle.vim ] || \
     echo "Installing Vim plugins..."
     vim -e +PluginInstall +qall > /dev/null 2>&1
 
-    # Install YouCompleteMe support libs.  And yes, use system clang, even
-    # though the YCM documentation suggests otherwise.
-    CDEFINES="-DUSE_SYSTEM_CLANG=ON"
+    # Install YouCompleteMe support libs with C-family semantic completion.
+    CDEFINES="-DUSE_CLANG_COMPLETER=ON"
 
     # On OSX, if you have Homebrew Python installed, YCM will be linked against
     # it, but the Homebrew version of Vim is linked against the system Python.
