@@ -54,8 +54,8 @@ if [ ! -d ~/.vim/bundle/Vundle.vim ] || \
     # the system Python headers and shared libraries.
     osname=`uname -o`
     if [ $osname == "Darwin" ]; then
-        CDEFINES="$CDEFINES -DPYTHON_LIBRARY=/usr/local/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib"
-        CDEFINES="$CDEFINES -DPYTHON_INCLUDE_DIR=/usr/local/Frameworks/Python.framework/Versions/2.7/Headers"
+        CDEFINES="$CDEFINES -DPYTHON_LIBRARY=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib"
+        CDEFINES="$CDEFINES -DPYTHON_INCLUDE_DIR=/System/Library/Frameworks/Python.framework/Versions/2.7/Headers"
     fi
 
     ycm_build_dir=`mktemp /tmp/ycm_build.XXXXXX`
