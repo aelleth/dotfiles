@@ -58,7 +58,7 @@ if [ ! -d ~/.vim/bundle/Vundle.vim ] || \
         CDEFINES="$CDEFINES -DPYTHON_INCLUDE_DIR=/System/Library/Frameworks/Python.framework/Versions/2.7/Headers"
     fi
 
-    ycm_build_dir=`mktemp /tmp/ycm_build.XXXXXX`
+    ycm_build_dir=`mktemp -d /tmp/ycm_build.XXXXXX`
     cd $ycm_build_dir
     cmake -G "Unix Makefiles" $CDEFINES . \
         ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp
