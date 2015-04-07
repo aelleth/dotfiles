@@ -11,7 +11,7 @@ git_submodule_needs_init() {
     fi
 }
 
-binlist="cmake git vim"
+binlist="cmake git vim ruby"
 
 for binary in $binlist; do
     if ! which $binary >/dev/null; then
@@ -65,6 +65,12 @@ if [ ! -d ~/.vim/bundle/Vundle.vim ] || \
     make ycm_support_libs
     cd $script_dir
     rm -r $ycm_build_dir
+
+    # Command-T compiled portion
+    cd ~/.vim/bundle/Command-T/ruby/command-t
+    ruby extconf.rb
+    make
+    cd $script_dir
 fi
 
 if [ ! -d ~/.vim/plugin ]; then
