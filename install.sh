@@ -36,10 +36,10 @@ if [ ! -e ~/.tmux.conf ]; then
     ln -s $script_dir/tmux/tmux.conf ~/.tmux.conf
 fi
 
-if [ ! -d ~/.vim/bundle/vundle ] || \
-    ! git rev-parse --git-dir ~/.vim/bundle/vundle >/dev/null 2>&1; then
+if [ ! -d ~/.vim/bundle/Vundle.vim ] || \
+    ! git rev-parse --git-dir ~/.vim/bundle/Vundle.vim >/dev/null 2>&1; then
     mkdir -p ~/.vim/bundle
-    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/vundle
+    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     echo "Installing Vim plugins..."
     vim -e +PluginInstall +qall > /dev/null 2>&1
 
