@@ -26,6 +26,7 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'scrooloose/nerdtree'
 Plugin 'wincent/Command-T'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'scrooloose/syntastic'
 
 call vundle#end()
 filetype plugin indent on
