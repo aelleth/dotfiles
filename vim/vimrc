@@ -70,6 +70,7 @@ set matchtime=2
 set matchpairs+=<:>
 
 set t_Co=256
+set t_cl="\<Esc>[H\<Esc>[J"
 syntax enable
 set background=dark
 let g:solarized_termtrans=1
