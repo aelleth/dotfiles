@@ -1,2 +1,10 @@
-eval $(ssh-agent) >/dev/null
-ssh-add
+export SSH_AUTH_SOCK=$HOME/.ssh-socket
+
+ssh-add -l >/dev/null 2>&1
+if [ $? = 2 ]; then
+    rm -rf $SSH_AUTH_SOCK
+    ssh-agent -a $SSH_AUTH_SOCK >| /tmp/.ssh-script-$USER
+    source /tmp/.ssh-script-$USER
+    echo $SSH_AGENT_PID >| $HOME/.ssh-agent-pid
+    rm /tmp/.ssh-script-$USER
+fi
