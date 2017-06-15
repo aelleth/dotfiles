@@ -227,7 +227,7 @@ endif
 "                              Plugins roam here                               "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_powerline_fonts=1
-let g:airline_theme='wombat'
+let g:airline_theme='solarized'
 let g:tagbar_usearrows=1
 
 " ale
