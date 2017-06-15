@@ -14,7 +14,8 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Plugins, plugins, plugins
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Valloric/YouCompleteMe'
