@@ -58,11 +58,21 @@ setopt EXTENDED_GLOB
 LESS="isR"
 export LESS
 
+GOVER="1.8.3"
+
 # PATH
 if [[ $OSTYPE =~ "darwin" ]]; then
     PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/sbin:usr/local/bin:$PATH"
     MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+
+    export GOROOT=/usr/local/Cellar/go/$GOVER/libexec
+elif [[ $OSTYPE =~ "linux-gnu|cygwin" ]]; then
+    export GOROOT=/usr/local/go/$GOVER
 fi
+
+PATH="$PATH:$GOROOT/bin"
+export GOPATH="$HOME/dev/go"
+PATH="$PATH:$GOPATH/bin"
 
 PATH="$HOME/bin:$PATH"
 
