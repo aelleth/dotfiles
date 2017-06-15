@@ -3,9 +3,9 @@ autoload -U promptinit && promptinit
 autoload -U compinit && compinit
 
 if [[ $EUID == 0 ]]; then
-	_prompt_char='%F{red}#%f'
+    _prompt_char='%F{red}#%f'
 else
-	_prompt_char="%F{green}\$%f"
+    _prompt_char="%F{green}\$%f"
 fi
 
 PROMPT="[%F{105}%n@%m%f:%F{227}%c%f]${_prompt_char} "
@@ -60,16 +60,16 @@ export LESS
 
 # PATH
 if [[ $OSTYPE =~ "darwin" ]]; then
-	PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:$PATH"
-	MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+    PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:$PATH"
+    MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 fi
 
 PATH="$HOME/bin:$PATH"
 
 # Use the correct ls(1) options to specify long mtime output
 if [[ $OSTYPE =~ "linux-gnu|cygwin" ]]; then
-	alias ls='ls --color=tty'
-	alias ll='ls -l --time-style="+%a, %d %h %Y %T %z"'
+    alias ls='ls --color=tty'
+    alias ll='ls -l --time-style="+%a, %d %h %Y %T %z"'
 elif [[ $OSTYPE =~ "freebsd|darwin" ]]; then
     if [[ -n $(whence gls) ]]; then
         alias ls='gls --color=auto'
@@ -95,7 +95,7 @@ llp() {
 
 # dircolors
 if whence dircolors >&/dev/null && [[ -e ~/.dircolors ]]; then
-	eval $(dircolors -b ~/.dircolors)
+    eval $(dircolors -b ~/.dircolors)
 fi
 
 zmodload zsh/complist
