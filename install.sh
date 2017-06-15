@@ -1,9 +1,9 @@
 #!/bin/sh
 
-script_dir=$(cd $(dirname "$0") && pwd)
+script_dir=$(cd "$(dirname "$0")" && pwd)
 
 git_submodule_needs_init() {
-    res=`git submodule status $1 | awk '{ print substr($0, 0, 1) }'`
+    res=$(git submodule status "$1" | awk '{ print substr($0, 0, 1) }')
     if [ "$res" = "-" ]; then
         return 0
     else
@@ -14,26 +14,26 @@ git_submodule_needs_init() {
 binlist="cmake git vim ruby"
 
 for binary in $binlist; do
-    if ! which $binary >/dev/null; then
+    if ! which "$binary" >/dev/null; then
         >&2 echo "error: $binary is not installed"
         exit 1
     fi
 done
 
 if [ ! -e ~/.zshrc ]; then
-    ln -s $script_dir/zsh/zshrc ~/.zshrc
+    ln -s "$script_dir/zsh/zshrc" ~/.zshrc
 fi
 
 if [ ! -e ~/.zlogin ]; then
-    ln -s $script_dir/zsh/zlogin ~/.zlogin
+    ln -s "$script_dir/zsh/zlogin" ~/.zlogin
 fi
 
 if [ ! -e ~/.vimrc ]; then
-    ln -s $script_dir/vim/vimrc ~/.vimrc
+    ln -s "$script_dir/vim/vimrc" ~/.vimrc
 fi
 
 if [ ! -e ~/.tmux.conf ]; then
-    ln -s $script_dir/tmux/tmux.conf ~/.tmux.conf
+    ln -s "$script_dir/tmux/tmux.conf" ~/.tmux.conf
 fi
 
 if [ ! -d ~/.vim/bundle/Vundle.vim ] || \
@@ -70,11 +70,11 @@ if [ ! -d ~/.vim/bundle/Vundle.vim ] || \
     cd ~/.vim/bundle/Command-T/ruby/command-t
     ruby extconf.rb
     make
-    cd $script_dir
+    cd "$script_dir"
 fi
 
 if [ ! -d ~/.vim/plugin ]; then
-    ln -s $script_dir/vim/plugin ~/.vim/plugin
+    ln -s "$script_dir/vim/plugin" ~/.vim/plugin
 fi
 
 if git_submodule_needs_init "dircolors-solarized"; then
@@ -83,5 +83,5 @@ if git_submodule_needs_init "dircolors-solarized"; then
 fi
 
 if [ ! -e ~/.dircolors ]; then
-    ln -s $script_dir/dircolors-solarized/dircolors.256dark ~/.dircolors
+    ln -sf "$script_dir/dircolors-solarized/dircolors.256dark" ~/.dircolors
 fi
