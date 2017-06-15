@@ -7,6 +7,7 @@ endif
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
+let &runtimepath.=',~/.vim/bundle/ale'
 call vundle#begin()
 
 " Let Vundle manage Vundle, required
@@ -26,7 +27,7 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'scrooloose/nerdtree'
 Plugin 'wincent/Command-T'
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
 
 call vundle#end()
 filetype plugin indent on
@@ -229,9 +230,11 @@ let g:airline_powerline_fonts=1
 let g:airline_theme='wombat'
 let g:tagbar_usearrows=1
 
-" syntastic
-let g:syntastic_error_symbol = '🐞'
-let g:syntastic_warning_symbol = '💩'
+" ale
+let g:ale_set_quickfix = 1
+let g:ale_sign_error = '🐞'
+let g:ale_sign_warning = '💩'
+
 let g:syntastic_check_on_open = 1
 let g:syntastic_enable_signs = 1
 let g:syntastic_always_populate_loc_list = 1
