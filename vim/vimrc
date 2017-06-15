@@ -30,6 +30,10 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'wincent/command-t'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'w0rp/ale'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'fatih/vim-go'
+Plugin 'elzr/vim-json'
+Plugin 'suan/vim-instant-markdown'
 
 call vundle#end()
 filetype plugin indent on
