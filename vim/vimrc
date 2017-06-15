@@ -93,6 +93,10 @@ set colorcolumn=+1
 
 " Number of screen lines to use for the command line
 set cmdheight=2
+
+" MacVim/gvim font
+set guifont=Droid\ Sans\ Mono\ for\ Powerline:h12
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               Editor settings                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
