@@ -25,7 +25,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'jlfwong/vim-mercenary'
 Plugin 'tpope/vim-dispatch'
 Plugin 'scrooloose/nerdtree'
-Plugin 'wincent/Command-T'
+Plugin 'wincent/command-t'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'w0rp/ale'
 
@@ -249,6 +249,7 @@ let g:indent_guides_guide_size = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <F8> :TagbarToggle<CR>
 map <F10> :Make<CR>
+nmap <C-T> :CommandT<CR>
 
 nmap <C-\>s :cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <C-\>g :cs find g <C-R>=expand("<cword>")<CR><CR>
