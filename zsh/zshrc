@@ -115,3 +115,7 @@ man() {
 }
 
 CSCOPE_EDITOR=$(whence -p vim); export CSCOPE_EDITOR
+
+if [ -f "$HOME/.iterm2_shell_integration.zsh" ]; then
+    source "$HOME/.iterm2_shell_integration.zsh"
+fi
