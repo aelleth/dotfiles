@@ -135,3 +135,5 @@ export NVM_DIR="$HOME/.nvm"
 if [ -f '/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' ]; then
     source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
+
+fpath=(/usr/local/share/zsh-completions $fpath)
