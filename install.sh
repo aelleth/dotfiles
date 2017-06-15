@@ -43,28 +43,9 @@ if [ ! -d ~/.vim/bundle/Vundle.vim ] || \
     echo "Installing Vim plugins..."
     vim -e +PluginInstall +qall > /dev/null 2>&1
 
-    # Install YouCompleteMe support libs with C-family semantic completion.
-    CDEFINES="-DUSE_CLANG_COMPLETER=ON"
-
-    # On OSX, if you have Homebrew Python installed, YCM will be linked against
-    # it, but the Homebrew version of Vim is linked against the system Python.
-    # Segfaults and hilarity ensue.
-    #
-    # In order to restore chaos in this madness, we explicitly point clang to
-    # the system Python headers and shared libraries.
-    osname=`uname -o`
-    if [ $osname == "Darwin" ]; then
-        CDEFINES="$CDEFINES -DPYTHON_LIBRARY=/System/Library/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib"
-        CDEFINES="$CDEFINES -DPYTHON_INCLUDE_DIR=/System/Library/Frameworks/Python.framework/Versions/2.7/Headers"
-    fi
-
-    ycm_build_dir=`mktemp -d /tmp/ycm_build.XXXXXX`
-    cd $ycm_build_dir
-    cmake -G "Unix Makefiles" $CDEFINES . \
-        ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp
-    make ycm_support_libs
-    cd $script_dir
-    rm -r $ycm_build_dir
+    cd ~/.vim/bundle/YouCompleteMe
+    ./install.py --clang-completer --gocode-completer  --omnisharp-completer --tern-completer --racer-completer
+    cd "$script_dir"
 
     # Command-T compiled portion
     cd ~/.vim/bundle/Command-T/ruby/command-t
