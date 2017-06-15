@@ -8,7 +8,7 @@ else
     _prompt_char="%F{green}\$%f"
 fi
 
-PROMPT="[%F{105}%n@%m%f:%F{227}%c%f]${_prompt_char} "
+PROMPT="[%F{105}%n@%m%f:%F{214}%c%f]${_prompt_char} "
 RPROMPT="%(?.%F{green}✓%f.%F{red}✗%f)"
 
 HISTFILE=~/.history
